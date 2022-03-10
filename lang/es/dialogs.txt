@@ -1,0 +1,5 @@
+Ingresa en nuevo idioma: 
+Idioma establecido al español
+¡Ganaste!
+Perdiste. la palabra era 
+Presione Enter para continuar . . . 

@@ -1,0 +1,5 @@
+Enter the new language: 
+Language set to English
+You won!
+You lost. the word was 
+Press Enter to continue . . . 
