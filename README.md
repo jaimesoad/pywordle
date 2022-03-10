@@ -32,3 +32,12 @@ Right now, pywordle just supports English and Spanish, that's why I made it easy
 All you need to do is create a new folder inside the lang directory following the **ISO 639-1** code; basically the 2-letter code for each language. E.g: it is Italian, de is German, fr is French and so on.
 
 After doing so, copy the list for all the 5-letter words (all caps) the player can use into a file called `dict.csv`, the list of words the player have to guess into a file called `usable.csv` and a txt with all the dialogs called `dialogs.txt` into your language directory.
+
+**For the dialogs: use this scheme:**
+English | Spanish
+|---|---|
+Enter the new language:  | Ingresa el nuevo idioma: 
+Language set to English | Idioma establecido al español
+You won! | ¡Ganaste!
+You lost. the word was  | Perdiste. la palabra era 
+Press Enter to continue . . .  | Presione Enter para continuar . . . 
