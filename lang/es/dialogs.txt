@@ -1,4 +1,4 @@
-Ingresa en nuevo idioma: 
+Ingresa el nuevo idioma: 
 Idioma establecido al español
 ¡Ganaste!
 Perdiste. la palabra era 
