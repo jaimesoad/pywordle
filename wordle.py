@@ -5,7 +5,6 @@ import platform
 
 lang = ""
 path = ""
-dict = ""
 word = ""
 
 inPlace = "🟩"
@@ -20,33 +19,41 @@ cells, used = list(), list()
 counts      = {}
 verifier    = "🔵"
 dialogs     = list()
+dict = list()
 
 for i in range(0, 6):
     cells.append([neither*5, ""])
 
+# Do i really need to explain what this does?
 def clear():
     if platform.system() == "Windows":
         os.system("cls")
     else:
         os.system("clear")
 
-def fill():
-    return csv.reader(open(f"{path}/dict.csv", 'r'))
-
+# Gives all the variables its respective value according to the set language.
 def loadFiles():
     global lang, path, dict, word, tries, cells, used, verifier, choice, dialogs
     with open('config', 'r') as config:
         reader = list(csv.reader(config, delimiter=","))[0]
         lang = reader[0]
-
+        
     path     = "lang/" + lang
-    dict     = csv.reader(open(f"{path}/usable.csv", 'r'))
-    word     = random.choice(list(dict))[0]
+
+    dict.clear()
+    csvDict  = csv.reader(open(f"{path}/usable.csv", 'r'))
+    dict     = [word for sublist in csvDict for word in sublist]
+
+    word     = random.choice(dict)
     tries    = 0
     used     = []
     verifier = "🔵"
     choice   = ""
     dialogs  = list()
+
+    dict.clear()
+    csvDict  = csv.reader(open(f"{path}/dict.csv", 'r'))
+    dict     = [word for sublist in csvDict for word in sublist]
 
     csvDiags = list(csv.reader(open(f"{path}/dialogs.txt", 'r')))
     dialogs  = [sentence for sublist in csvDiags for sentence in sublist]
@@ -56,23 +63,7 @@ def loadFiles():
 
 loadFiles()
 
-def exists(word):
-    dict = fill()
-
-    if len(word) == 5:
-        for col in dict:
-            if col[0] == word:
-                return True
-    
-    return False
-
-def matchKey(dict, key):
-    for i in dict:
-        if i == key:
-            return True
-        
-    return False
-
+# Chekcs a given letter in a word the user typed for unnecesary duplicates.
 def worthy(selected : str, word : str, count : int, letter : str):
     writtenAmount = selected.count(letter)
     realAmount    = word.count(letter)
@@ -96,12 +87,13 @@ def worthy(selected : str, word : str, count : int, letter : str):
 
     return False
 
+# Changes the language of the game.
 def chLang():
     langs   = list()
     replace = ""
 
     for i in os.scandir("lang"):
-        if(i.is_dir()):
+        if i.is_dir():
             langs.append(i.name)
 
     clear()
@@ -140,7 +132,7 @@ while not gameOver and tries < 6:
 
     verifier = "🔴"
 
-    if exists(choice) and not choice in used:
+    if choice in dict and not choice in used:
         wordle   = ""
         verifier = "🟢"
         used.append(choice)
@@ -158,6 +150,7 @@ while not gameOver and tries < 6:
         cells[tries] = [wordle, choice]
         tries += 1
 
+    # Commands the user can type, like changing the language.
     elif choice[0] == '-':
         if choice == "-L":
             chLang()
