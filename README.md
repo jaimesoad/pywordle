@@ -33,7 +33,7 @@ All you need to do is create a new folder inside the lang directory following th
 
 After doing so, copy the list for all the 5-letter words (all caps) the player can use into a file called `dict.csv`, the list of words the player have to guess into a file called `usable.csv` and a txt with all the dialogs called `dialogs.txt` into your language directory.
 
-**For the dialogs: use this scheme:**
+**For the dialogs, use this scheme:**
 English | Spanish
 |---|---|
 Enter the new language:  | Ingresa el nuevo idioma: 
