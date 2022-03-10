@@ -1,3 +1,9 @@
 #! /bin/sh
 
-python wordle.py
+if [ $(which python) = "/usr/bin/python" ]
+    then
+        python wordle.py
+
+    else
+        python3 wordle.py
+fi
