@@ -1,5 +1,5 @@
 # pywordle
----
+
 ## About
 
 pywordle is a CLI implementation of the classic wordle.\
@@ -25,10 +25,11 @@ To play the game you can either type `python wordle.py`, `python3 wordle.py` or 
 You can also use some commands inside the game:
 - **Change the language:** `-l` or `-L`.
 - **Reset the game:** `-r` or `-R`.
+- **Exit the game:** `-e` or `-E`
 
 ## Contribution
 
-Right now, pywordle just supports English and Spanish, that's why I made it easy to add new languages.\
+Right now, pywordle only supports English and Spanish, that's why I made it easy to add new languages.\
 All you need to do is create a new folder inside the lang directory following the **ISO 639-1** code; basically the 2-letter code for each language. E.g: it is Italian, de is German, fr is French and so on.
 
 After doing so, copy the list for all the 5-letter words (all caps) the player can use into a file called `dict.csv`, the list of words the player have to guess into a file called `usable.csv` and a txt with all the dialogs called `dialogs.txt` into your language directory.
